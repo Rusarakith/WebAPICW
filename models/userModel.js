@@ -16,7 +16,12 @@ const userSchema = mongoose.Schema(
             required: [true, 'Last name is required.']
         },
         nic: {
-            type: String
+            type: String,
+            
+        },
+        email: {
+            type: String,
+            required: [true, 'Email is required.']
         },
         dob: {
             type: Date,
@@ -38,7 +43,15 @@ const userSchema = mongoose.Schema(
         },
         postalCode: {
             type: Number,
-            required: [true, 'Postal; Code is required.']
+            required: [true, 'Postal Code is required.']
+        },
+        roleId: {
+            type: String,
+            required: [true, 'Role Code is required.']
+        },
+        password: {
+            type: String,
+            required: [true, 'Password is required.']
         },
         isActive: {
             type: Boolean,
