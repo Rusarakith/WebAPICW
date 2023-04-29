@@ -13,28 +13,38 @@ exports.addUser = async (req, res) => {
 
         // assign req body values
         let data = req.body;
+        let email = data.email;
 
         // set pasword hash
         let password = await passwordHash(data.password);
 
-        // create User
-        const user = await User.create({
-
-            firstName: data.firstName,
-            lastName: data.lastName,
-            nic: data.nic,
-            email: data.email,
-            dob: data.dob,
-            addressLine1: data.addressLine1,
-            addressLine2: data.addressLine2,
-            city: data.city,
-            province: data.province,
-            postalCode: data.postalCode,
-            roleId: data.roleId,
-            password: password,
-            isActive: true
+        const userData = await User.findOne({
+            'email': email
         })
-        res.status(200).json({ message: constants.MsgAddUserSuccessfull })
+
+        if (!userData) {
+            // create User
+            const user = await User.create({
+
+                firstName: data.firstName,
+                lastName: data.lastName,
+                nic: data.nic,
+                email: data.email,
+                dob: data.dob,
+                addressLine1: data.addressLine1,
+                addressLine2: data.addressLine2,
+                city: data.city,
+                province: data.province,
+                postalCode: data.postalCode,
+                roleId: data.roleId,
+                password: password,
+                isActive: true
+            })
+            res.status(200).json({ message: constants.MsgAddUserSuccessfull })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgUserExist })
+        }
 
     } catch (err) {
         console.log(err);
