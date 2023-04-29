@@ -12,7 +12,9 @@
     "http-errors": "^2.0.0",
     "jade": "^1.11.0",
     "mongoose": "^7.0.5",
+    "mongoose-schematype-uuid": "^1.1.4",
     "morgan": "^1.10.0",
+    "node-uuid": "^1.4.8",
     "nodemon": "^2.0.22",
     "npm": "^9.6.5",
     "path": "^0.12.7"
