@@ -1,12 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
-const User = require('../models/userModel')
+const Role = require('../models/roleModel')
 
 
-exports.addUser = async (req, res) => {
+exports.addRole = async (req, res) => {
     try {
 
-        const user = await User.create(req.body)
+        const user = await Role.create(req.body)
         res.status(200).json(user);
 
     } catch (err) {

@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
+const routers = express.Router();
 const userController = require('../controllers/userController');
 
 // DB Connection Test
-router.get('/connection', userController.connectionBuilder);
+routers.post('/addUser', userController.addUser);
 
-module.exports = router;
+module.exports = routers;
