@@ -27,10 +27,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Import Routes
 var userRoute = require('./routes/userRoute');
 var roleRoute = require('./routes/roleRoute');
+var flightRoute = require('./routes/flightRoute');
 
 // Connect routes 
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
+app.use('/flight', flightRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
