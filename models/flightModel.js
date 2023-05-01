@@ -32,22 +32,14 @@ const flightSchema = mongoose.Schema(
         },
         economyClass: {
             type: {
-                price: {
-                    trype: Number
-                },
-                availableTickets: {
-                    type: Number
-                }
+                price: Number,
+                availableTickets: Number
             }
         },
         businessClass: {
             type: {
-                price: {
-                    trype: Number
-                },
-                availableTickets: {
-                    type: Number
-                }
+                price: Number,
+                availableTickets: Number
             }
         },
         isActive: {
