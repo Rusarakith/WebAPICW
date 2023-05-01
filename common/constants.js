@@ -6,6 +6,8 @@ const MsgAddFlightSuccessfull = 'Flight added successfully.'
 const MsgFlightExist = 'Flight already exist.'
 const MsgAddHotelSuccessfully = 'Hotel added successfully.'
 const MsgHotelExist = 'Hotel already exist.'
+const MsgAddPackageSuccessfully = 'Holiday package added successfully.'
+const MsgPackageExist = 'Holiday package already exist.'
 
 module.exports = {
     MsgAddUserSuccessfull,
@@ -15,5 +17,7 @@ module.exports = {
     MsgAddFlightSuccessfull,
     MsgFlightExist,
     MsgAddHotelSuccessfully,
-    MsgHotelExist
+    MsgHotelExist,
+    MsgAddPackageSuccessfully,
+    MsgPackageExist
 }

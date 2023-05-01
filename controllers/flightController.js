@@ -50,3 +50,15 @@ exports.addFlight = async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }
+
+exports.getAllFlights = async (req, res) => {
+    try {
+
+        const flights = await Flight.find()
+        res.status(200).json(flights);
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}

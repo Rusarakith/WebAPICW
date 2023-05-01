@@ -29,12 +29,14 @@ var userRoute = require('./routes/userRoute');
 var roleRoute = require('./routes/roleRoute');
 var flightRoute = require('./routes/flightRoute');
 var hotelRoute = require('./routes/hotelRoute');
+var holidayPackageRoute = require('./routes/holidayPackageRoute')
 
 // Connect routes 
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
 app.use('/flight', flightRoute);
 app.use('/hotel', hotelRoute);
+app.use('/package', holidayPackageRoute)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
