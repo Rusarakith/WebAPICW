@@ -28,11 +28,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var userRoute = require('./routes/userRoute');
 var roleRoute = require('./routes/roleRoute');
 var flightRoute = require('./routes/flightRoute');
+var hotelRoute = require('./routes/hotelRoute');
 
 // Connect routes 
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
 app.use('/flight', flightRoute);
+app.use('/hotel', hotelRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -39,7 +39,7 @@ exports.addFlight = async (req, res) => {
                 isActive: true
 
             })
-            res.status(200).json({ message: constants.MsgAdFlightSuccessfull })
+            res.status(200).json({ message: constants.MsgAddFlightSuccessfull })
         }
         else {
             res.status(403).json({ message: constants.MsgFlightExist })
