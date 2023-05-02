@@ -53,7 +53,7 @@ const userSchema = mongoose.Schema(
             type: String,
             required: [true, 'Password is required.']
         },
-        PasswordResetLinkExpirationDate: {
+        passwordResetLinkExpirationDate: {
             type: String
         },
         isActive: {

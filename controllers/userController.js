@@ -137,7 +137,7 @@ exports.forgotPassword = async (req, res) => {
             }
 
             await User.updateOne({
-                'PasswordResetLinkExpirationDate': addMinutes(new Date(), 30)
+                'passwordResetLinkExpirationDate': addMinutes(new Date(), 30)
             })
 
             sendEmail(user.email, body, 'Account Password Reset - Holiday Travels')
@@ -166,12 +166,12 @@ exports.resetPassword = async (req, res) => {
             '_id': id
         })
 
-        let passwordResetLinkExpirationDate = user.PasswordResetLinkExpirationDate
+        let passwordResetLinkExpirationDate = user.passwordResetLinkExpirationDate
 
         if (new Date() <= new Date(passwordResetLinkExpirationDate)) {
             if (user) {
                 await User.updateOne({
-                    Password: await passwordHash(password),
+                    'password': await passwordHash(password),
                 })
                 return res.status(200).json({ message: constants.MsgPasswordResetSuccessfully });
             }
