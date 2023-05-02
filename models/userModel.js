@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
         },
         nic: {
             type: String,
-            
+
         },
         email: {
             type: String,
@@ -52,6 +52,9 @@ const userSchema = mongoose.Schema(
         password: {
             type: String,
             required: [true, 'Password is required.']
+        },
+        PasswordResetLinkExpirationDate: {
+            type: String
         },
         isActive: {
             type: Boolean,
