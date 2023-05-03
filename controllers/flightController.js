@@ -11,8 +11,6 @@ exports.addFlight = async (req, res) => {
         let data = req.body;
         let flightNo = data.flightNo;
 
-        console.log(data)
-
         const flightData = await Flight.findOne({
             'flightNo': flightNo
         })
@@ -72,8 +70,6 @@ exports.updateFlight = async (req, res) => {
         let data = req.body;
         let id = data._id;
 
-        console.log(data)
-
         const flightData = await Flight.findOne({
             '_id': id
         })
@@ -101,6 +97,33 @@ exports.updateFlight = async (req, res) => {
 
             })
             res.status(200).json({ message: constants.MsgUpdateFlightSuccessfull })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgFlightNotExist })
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}
+
+exports.deleteFlight = async (req, res) => {
+    try {
+
+        let data = req.body;
+        let flightNo = data.flightNo;
+
+        const flightData = await Flight.findOne({
+            'flightNo': flightNo
+        })
+
+        if (flightData) {
+            // delete flight
+            const flight = await Flight.deleteOne({
+                '_id': flightData._id
+            })
+            res.status(200).json({ message: constants.MsgFlightDeletedSuccessfully })
         }
         else {
             res.status(403).json({ message: constants.MsgFlightNotExist })

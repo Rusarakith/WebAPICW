@@ -15,6 +15,7 @@ const MsgUserNotExist = 'User does not exist.'
 const MsgPasswordResetSuccessfully = 'Password reset successfull.'
 const MsgInvalidResetLink = 'nvalid password reset link.'
 const MsgLinkExpired = 'Password reset link is expired.'
+const MsgFlightDeletedSuccessfully = 'Flight deleted Successfully.'
 
 module.exports = {
     MsgAddUserSuccessfull,
@@ -33,5 +34,6 @@ module.exports = {
     MsgInvalidResetLink,
     MsgLinkExpired,
     MsgUpdateFlightSuccessfull,
-    MsgFlightNotExist
+    MsgFlightNotExist,
+    MsgFlightDeletedSuccessfully
 }

@@ -6,5 +6,6 @@ const flightController = require('../controllers/flightController');
 routers.post('/addFlight', flightController.addFlight);
 routers.get('/getAllFlights', flightController.getAllFlights);
 routers.put('/updateFlight', flightController.updateFlight);
+routers.delete('/deleteFlight', flightController.deleteFlight);
 
 module.exports = routers;
