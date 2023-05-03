@@ -55,7 +55,7 @@ exports.getAllFlights = async (req, res) => {
     try {
 
         const flights = await Flight.find()
-        res.status(200).json(flights);
+        res.status(200).json({flights:flights});
 
     } catch (err) {
         console.log(err);
