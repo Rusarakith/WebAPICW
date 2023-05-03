@@ -3,7 +3,9 @@ const MsgIncorrectUNPW = 'Incorrect username or password.'
 const MsgInactiveUser = 'Inactivated User.'
 const MsgUserExist = 'User already exist.'
 const MsgAddFlightSuccessfull = 'Flight added successfully.'
+const MsgUpdateFlightSuccessfull = 'Flight updated successfully.'
 const MsgFlightExist = 'Flight already exist.'
+const MsgFlightNotExist = 'Flight does not exist.'
 const MsgAddHotelSuccessfully = 'Hotel added successfully.'
 const MsgHotelExist = 'Hotel already exist.'
 const MsgAddPackageSuccessfully = 'Holiday package added successfully.'
@@ -29,5 +31,7 @@ module.exports = {
     MsgUserNotExist,
     MsgPasswordResetSuccessfully,
     MsgInvalidResetLink,
-    MsgLinkExpired
+    MsgLinkExpired,
+    MsgUpdateFlightSuccessfull,
+    MsgFlightNotExist
 }

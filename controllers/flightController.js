@@ -54,8 +54,57 @@ exports.addFlight = async (req, res) => {
 exports.getAllFlights = async (req, res) => {
     try {
 
-        const flights = await Flight.find()
-        res.status(200).json({flights:flights});
+        const flights = await Flight.find({
+            'isActive': true
+        })
+        res.status(200).json({ flights: flights });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}
+
+exports.updateFlight = async (req, res) => {
+    try {
+
+        // assign req body values
+        let data = req.body;
+        let id = data._id;
+
+        console.log(data)
+
+        const flightData = await Flight.findOne({
+            '_id': id
+        })
+
+        if (!flightData) {
+            // create flight
+            const flight = await Flight.updateOne({
+
+                flightNo: data.flightNo,
+                departureDestination: data.departureDestination,
+                arrivalDestination: data.arrivalDestination,
+                depatureDate: data.depatureDate,
+                arrivalDate: data.arrivalDate,
+                airline: data.airline,
+                transitTime: data.transitTime,
+                economyClass: {
+                    price: data.economyPrice,
+                    availableTickets: data.economyAvlTickets,
+                },
+                businessClass: {
+                    price: data.businessPrice,
+                    availableTickets: data.businessAvlTickets
+                },
+                isActive: data.isActive
+
+            })
+            res.status(200).json({ message: constants.MsgUpdateFlightSuccessfull })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgFlightNotExist })
+        }
 
     } catch (err) {
         console.log(err);
