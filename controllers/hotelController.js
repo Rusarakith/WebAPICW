@@ -79,3 +79,94 @@ exports.getAllHotels = async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }
+
+exports.updateHotel = async (req, res) => {
+    try {
+
+        // assign req body values
+        let data = req.body;
+        let id = data.id;
+
+        console.log(data)
+
+        const hotelData = await Hotel.findOne({
+            '_id': id
+        })
+
+        if (hotelData) {
+            // update hotel
+            const hotel = await Hotel.create({
+
+                hotelName: hotelName,
+                destination: data.destination,
+                starRating: data.starRating,
+                basePrice: data.basePrice,
+                hasPool: data.hasPool,
+                hasKidsPlayArea: data.hasKidsPlayArea,
+                hasGym: data.hasGym,
+                hasBeachAccess: data.hasBeachAccess,
+                deluxeRoom: {
+                    price: {
+                        fullboardPrice: data.deluxeFullboardPrice,
+                        halfBoardPrice: data.deluxeHalfboardPrice,
+                        bedAndBreakfastPrice: data.deluxeBedAndBreakfastPrice
+                    },
+                    availableRooms: data.deluxeAvlRooms,
+                },
+                superDeluxeRoom: {
+                    price: {
+                        fullboardPrice: data.superDeluxeFullboardPrice,
+                        halfBoardPrice: data.superDeluxeHalfboardPrice,
+                        bedAndBreakfastPrice: data.superDeluxeBedAndBreakfastPrice
+                    },
+                    availableRooms: data.superDeluxeAvlRooms,
+                },
+                suiteRoom: {
+                    price: {
+                        fullboardPrice: data.suiteFullboardPrice,
+                        halfBoardPrice: data.suiteHalfboardPrice,
+                        bedAndBreakfastPrice: data.suiteBedAndBreakfastPrice
+                    },
+                    availableRooms: data.suiteAvlRooms,
+                },
+                isActive: true
+
+            })
+            res.status(200).json({ message: constants.MsgEditHotelSuccessfully })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgHotelNotExist })
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}
+
+exports.deleteHotel = async (req, res) => {
+    try {
+
+        let data = req.body;
+        let id = data.id;
+
+        const hotelData = await Hotel.findOne({
+            '_id': id
+        })
+
+        if (hotelData) {
+            // delete flight
+            const flight = await Hotel.deleteOne({
+                '_id': id
+            })
+            res.status(200).json({ message: constants.MsgHotelDeletedSuccessfully })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgFlightNotExist })
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}

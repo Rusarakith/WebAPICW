@@ -68,15 +68,17 @@ exports.updateFlight = async (req, res) => {
 
         // assign req body values
         let data = req.body;
-        let id = data._id;
+        let id = data.id;
+
+        console.log(id)
 
         const flightData = await Flight.findOne({
             '_id': id
         })
 
-        if (!flightData) {
-            // create flight
-            const flight = await Flight.updateOne({
+        if (flightData) {
+            // update flight
+            await Flight.updateOne({
 
                 flightNo: data.flightNo,
                 departureDestination: data.departureDestination,

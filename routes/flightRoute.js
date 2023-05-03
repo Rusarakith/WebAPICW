@@ -1,11 +1,13 @@
 const express = require('express');
 const routers = express.Router();
 const flightController = require('../controllers/flightController');
+const passport = require('passport');
+require('../utils/passport')
 
 // DB Connection Test
-routers.post('/addFlight', flightController.addFlight);
-routers.get('/getAllFlights', flightController.getAllFlights);
-routers.put('/updateFlight', flightController.updateFlight);
-routers.delete('/deleteFlight', flightController.deleteFlight);
+routers.post('/addFlight', passport.authenticate('jwt', { session: false }), flightController.addFlight);
+routers.get('/getAllFlights', passport.authenticate('jwt', { session: false }), flightController.getAllFlights);
+routers.put('/updateFlight', passport.authenticate('jwt', { session: false }), flightController.updateFlight);
+routers.delete('/deleteFlight', passport.authenticate('jwt', { session: false }), flightController.deleteFlight);
 
 module.exports = routers;

@@ -16,6 +16,9 @@ const MsgPasswordResetSuccessfully = 'Password reset successfull.'
 const MsgInvalidResetLink = 'nvalid password reset link.'
 const MsgLinkExpired = 'Password reset link is expired.'
 const MsgFlightDeletedSuccessfully = 'Flight deleted Successfully.'
+const MsgEditHotelSuccessfully = 'Hotel edited successfully.'
+const MsgHotelNotExist = 'Hotel does not exist.'
+const MsgHotelDeletedSuccessfully = 'Hotel deleted Successfully.'
 
 module.exports = {
     MsgAddUserSuccessfull,
@@ -35,5 +38,8 @@ module.exports = {
     MsgLinkExpired,
     MsgUpdateFlightSuccessfull,
     MsgFlightNotExist,
-    MsgFlightDeletedSuccessfully
+    MsgFlightDeletedSuccessfully,
+    MsgEditHotelSuccessfully,
+    MsgHotelNotExist,
+    MsgHotelDeletedSuccessfully
 }
