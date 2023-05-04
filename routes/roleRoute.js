@@ -4,5 +4,6 @@ const roleController = require('../controllers/roleController');
 
 // DB Connection Test
 router.post('/addRole', roleController.addRole);
+router.get('/getAllRoles', roleController.getAllRoles);
 
 module.exports = router;

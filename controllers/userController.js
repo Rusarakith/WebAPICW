@@ -7,7 +7,7 @@ const passwordCompare = require('../utils/passwordCompare')
 const jwt = require('jsonwebtoken');
 const UuidEncoder = require('uuid-encoder');
 const nodemailer = require('nodemailer');
-const constants = require('../common/constants')
+const constants = require('../common/constants');
 
 var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -129,7 +129,9 @@ exports.forgotPassword = async (req, res) => {
         if (user) {
             let id = (user._id).toString()
             let passwordResetURL = process.env.CLIENT_BASE_URL + "/resetPassword?id=" + id;
-            let body = `<html><body><p>Dear User,<br><br>Please find the requested account password <a href=${passwordResetURL}>reset link.</a><br>The above link will expire in 30 minutes!<br><br>If you need any help, please contact admin: ${process.env.ADMIN_EMAIL}<br>Thank you.<br><br>Regards,<br>Administrator,<br>Holiday Travels - Sri Lanka.</p></body></html>`
+            let body = `<html><body><p>Dear User,<br><br>Please find the requested account password 
+            <a href=${passwordResetURL}>reset link.</a><br>The above link will expire in 30 minutes!<br><br>Thank you.<br><br>Regards,
+            <br>Administrator,<br>Holiday Travels - Sri Lanka.</p></body></html>`
 
             function addMinutes(date, minutes) {
                 date.setMinutes(date.getMinutes() + minutes);
@@ -190,6 +192,18 @@ exports.resetPassword = async (req, res) => {
         return res.status(500).json({ message: err.message });
     }
 };
+
+exports.getAllUsers = async (req, res) => {
+    try {
+
+        const users = await User.find()
+        res.status(200).json({ users: users });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}
 
 // Send email
 async function sendEmail(email, text, subject) {

@@ -19,6 +19,9 @@ const MsgFlightDeletedSuccessfully = 'Flight deleted Successfully.'
 const MsgEditHotelSuccessfully = 'Hotel edited successfully.'
 const MsgHotelNotExist = 'Hotel does not exist.'
 const MsgHotelDeletedSuccessfully = 'Hotel deleted Successfully.'
+const MsgEditPackageSuccessfully = 'Holiday package edited successfully.'
+const MsgPackageNotExist = 'Holiday package does not exist.'
+const MsgPackageDeletedSuccessfully = 'Holiday package deleted successfully.'
 
 module.exports = {
     MsgAddUserSuccessfull,
@@ -41,5 +44,8 @@ module.exports = {
     MsgFlightDeletedSuccessfully,
     MsgEditHotelSuccessfully,
     MsgHotelNotExist,
-    MsgHotelDeletedSuccessfully
+    MsgHotelDeletedSuccessfully,
+    MsgEditPackageSuccessfully,
+    MsgPackageNotExist,
+    MsgPackageDeletedSuccessfully
 }

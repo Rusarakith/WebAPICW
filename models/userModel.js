@@ -1,6 +1,5 @@
 var uuid = require('node-uuid');
 const mongoose = require('mongoose');
-// require('mongoose-uuid2').loadType(mongoose);
 
 var UUID = mongoose.Types.UUID;
 
@@ -8,12 +7,10 @@ var UUID = mongoose.Types.UUID;
 const userSchema = mongoose.Schema(
     {
         firstName: {
-            type: String,
-            required: [true, 'First name is required.']
+            type: String
         },
         lastName: {
-            type: String,
-            required: [true, 'Last name is required.']
+            type: String
         },
         nic: {
             type: String,
@@ -24,26 +21,22 @@ const userSchema = mongoose.Schema(
             required: [true, 'Email is required.']
         },
         dob: {
-            type: Date,
-            required: [true, 'Date of birth is required.']
+            type: Date
         },
         addressLine1: {
-            type: String,
-            required: [true, ' Address line 1 is required.']
+            type: String
         },
         addressLine2: {
             type: String
         },
         city: {
-            type: String,
-            required: [true, 'City is required.']
+            type: String
         },
         province: {
             type: String
         },
         postalCode: {
-            type: Number,
-            required: [true, 'Postal Code is required.']
+            type: Number
         },
         roleId: {
             type: String,
@@ -57,8 +50,7 @@ const userSchema = mongoose.Schema(
             type: String
         },
         isActive: {
-            type: Boolean,
-            required: [true, 'Status is required.']
+            type: Boolean
         }
     },
     {

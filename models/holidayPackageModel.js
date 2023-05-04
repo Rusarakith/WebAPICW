@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 
-const holidayPackage = mongoose.Schema(
+const holidayPackageSchema = mongoose.Schema(
     {
-        packageName: {
+        name: {
             type: String
         },
         startDate: {
@@ -21,17 +21,20 @@ const holidayPackage = mongoose.Schema(
         hotelId: {
             type: String
         },
+        price: {
+            type: Number
+        },
         image: {
             type: String
         },
         isActive: {
-            type: String
+            type: Boolean
         }
     },
     {
         timestamps: true
     })
 
-const HolidayPackage = mongoose.model('HolidayPackage', holidayPackage);
+const HolidayPackage = mongoose.model('HolidayPackage', holidayPackageSchema);
 
 module.exports = HolidayPackage;
