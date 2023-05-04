@@ -148,21 +148,21 @@ exports.deleteHotel = async (req, res) => {
     try {
 
         let data = req.body;
-        let id = data.id;
+        let hotelName = data.hotelName;
 
         const hotelData = await Hotel.findOne({
-            '_id': id
+            'hotelName': hotelName
         })
 
         if (hotelData) {
             // delete flight
             const flight = await Hotel.deleteOne({
-                '_id': id
+                '_id': hotelData._id
             })
             res.status(200).json({ message: constants.MsgHotelDeletedSuccessfully })
         }
         else {
-            res.status(403).json({ message: constants.MsgFlightNotExist })
+            res.status(403).json({ message: constants.MsgHotelNotExist })
         }
 
     } catch (err) {
