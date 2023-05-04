@@ -72,7 +72,7 @@ exports.getAllHotels = async (req, res) => {
     try {
 
         const hotels = await Hotel.find()
-        res.status(200).json(hotels);
+        res.status(200).json({hotels:hotels});
 
     } catch (err) {
         console.log(err);
@@ -95,9 +95,9 @@ exports.updateHotel = async (req, res) => {
 
         if (hotelData) {
             // update hotel
-            const hotel = await Hotel.create({
+            const hotel = await Hotel.updateOne({
 
-                hotelName: hotelName,
+                hotelName: data.hotelName,
                 destination: data.destination,
                 starRating: data.starRating,
                 basePrice: data.basePrice,
