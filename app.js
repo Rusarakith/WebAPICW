@@ -55,7 +55,7 @@ app.use(function (err, req, res, next) {
 });
 
 // DB Connection
-mongoose.connect(process.env.MONGODB_CONNECTION_URL).then(() => {
+mongoose.connect(process.env.MONGODB_CONNECTION_URL, { serverSelectionTimeoutMS: 60000 }).then(() => {
     console.log("DB Connected Successfully!");
 }).catch((error) => {
     console.log(error);

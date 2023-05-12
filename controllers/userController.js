@@ -195,9 +195,56 @@ exports.resetPassword = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
-
+        const usersArr = [];
         const users = await User.find()
-        res.status(200).json({ users: users });
+        for (let i = 0; i < users.length; i++) {
+            const role = await Role.findOne({
+                '_id': users[i].roleId
+            })
+            const allUsersObj = {
+                id:users[i]._id,
+                firstName: users[i].firstName,
+                lastName: users[i].lastName,
+                email: users[i].email,
+                role: role.name,
+                isActive: users[i].isActive
+            }
+
+            usersArr.push(allUsersObj);
+        }
+        res.status(200).json({ users: usersArr });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+}
+
+exports.updateUser = async (req, res) => {
+    try {
+
+        // assign req body values
+        let data = req.body;
+        let id = data.id;
+
+        console.log(data)
+
+        const userData = await User.findOne({
+            '_id': id
+        })
+
+        if (userData) {
+            // update User
+            await User.updateOne({
+
+                isActive: !userData.isActive
+
+            })
+            res.status(200).json({ message: constants.MsgEditUserSuccessfully })
+        }
+        else {
+            res.status(403).json({ message: constants.MsgUserNotExist })
+        }
 
     } catch (err) {
         console.log(err);
